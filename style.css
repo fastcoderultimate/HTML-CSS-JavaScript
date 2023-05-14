@@ -6,22 +6,22 @@
 }
 body {
   min-height: 100vh;
-  background: linear-gradient(to bottom right, #212a3e, #1d267d);
+  background: linear-gradient(#394867, #9ba4b5);
 }
 :root {
-  /* --stairs_size: 360px;
-  --stair_item_size: 60px; */
-  --stairColor1: #8294c4;
-  --stairColor2: #112c7b;
+  /* --size: 280px;
+  --item_spacious: 40px; */
+  --stairsColor1: #896b8b;
+  --stairsColor2: #393646;
 }
 .stairs_container {
-  width: var(--stairs_size);
-  height: var(--stairs_size);
+  width: var(--size);
+  height: var(--size);
   position: fixed;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%) rotateX(-30deg) rotateY(30deg);
-  /* animation: animate 7s linear infinite; */
+  animation: animate 8s linear infinite;
 }
 @keyframes animate {
   0% {
@@ -31,67 +31,64 @@ body {
     transform: translate(-50%, -50%) rotateX(-30deg) rotateY(360deg);
   }
 }
-
 .stairs {
+  position: absolute;
+  left: 0;
+  top: 50%;
   width: 100%;
   height: 100%;
-  background: var(--stairColor1);
+  background: var(--stairsColor1);
+  transform: rotateX(90deg);
+}
+.item {
+  --item_base_size: calc(var(--size) - var(--i) * var(--item_spacious));
+  --item_base_size_minus: calc(0px - var(--item_base_size));
+  width: var(--item_base_size);
+  height: var(--item_base_size);
+  background: var(--stairsColor1);
   position: absolute;
   top: 50%;
-  transform: rotateX(90deg);
+  left: 50%;
+  transform: translate3d(-50%, -50%, calc(var(--i) * var(--item_spacious)));
 }
-.stairs .item {
-  position: absolute;
-  width: var(--stair_item_size);
-  height: 100%;
-  left: calc((var(--i) * var(--stair_item_size)) - var(--stair_item_size));
-  background: var(--stairColor1);
-  transform: translateZ(calc(var(--i) * var(--stair_item_size)));
-}
-.stairs .item:hover {
-  background: #bac5e1;
-}
-.stairs .item:after {
+.item:after {
   content: "";
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: var(--stairColor2);
-  right: 100%;
+  background: var(--stairsColor1);
+  transform: translateZ(var(--item_spacious));
+}
+.item div:nth-child(1) {
+  position: absolute;
+  width: var(--item_spacious);
+  height: 100%;
   top: 0;
-  transform-origin: right;
+  left: 0;
+  background: var(--stairsColor2);
+  transform-origin: left;
   transform: rotateY(-90deg);
 }
-.stairs .item:last-child:before {
-  content: "";
-  position: absolute;
-  width: calc(var(--i) * var(--stair_item_size));
-  height: 100%;
-  background: var(--stairColor1);
-  top: 0;
-  left: 100%;
-  transform-origin: left;
-  transform: rotateY(90deg);
-}
-.stairs .item div {
+.item div:nth-child(2) {
   position: absolute;
   width: 100%;
-  height: calc(var(--i) * var(--stair_item_size));
-  background: var(--stairColor1);
+  height: var(--item_spacious);
+  top: 0;
   left: 0;
-  bottom: 100%;
-  transform-origin: bottom;
+  background: var(--stairsColor2);
+  transform-origin: top;
   transform: rotateX(90deg);
 }
-
-/* Set the after as the oposite side */
-.stairs .item div:after {
+/* after as the oposite layer for the both divs */
+.item div:after {
   content: "";
   position: absolute;
   width: 100%;
   height: 100%;
-  background: var(--stairColor1);
-  left: 0;
   top: 0;
-  transform: translateZ(calc(0px - var(--stairs_size))); /* -360px */
+  left: 0;
+  background: var(--stairsColor2);
+  transform: translateZ(var(--item_base_size_minus));
 }
