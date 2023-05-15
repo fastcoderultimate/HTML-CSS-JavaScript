@@ -1,0 +1,198 @@
+* {
+  margin: 0;
+  padding: 0;
+  transform-style: preserve-3d;
+  box-sizing: border-box;
+}
+:root {
+  --layerColor1: #89375f;
+  --layerColor2: #ba90c6;
+  --layerWidth: 300px;
+  --layerHeight: 400px;
+  --layerWidth_minus: calc(0px - var(--layerWidth));
+  --layerHeight_minus: calc(0px - var(--layerHeight));
+}
+body {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #0a4d68, #05bfdb, #00ffca);
+  font-family: sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.item {
+  width: var(--layerWidth);
+  height: var(--layerHeight);
+  transform: rotateX(30deg) rotateY(35deg) rotate(-20deg) scale(0.9, 0.9);
+  transition: 1s linear;
+}
+.layer {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.layer1 {
+  background: var(--layerColor1);
+  transform-origin: left;
+  transform: translateZ(0) rotateY(0);
+  transition: 1s linear;
+}
+.layer2 {
+  background: var(--layerColor2);
+}
+.layer:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 1px 2px 15px #000;
+}
+.layer1:after {
+  background: var(--layerColor1);
+  transform: translateZ(15px);
+}
+.layer2:after {
+  background: var(--layerColor2);
+  transform: translateZ(-15px);
+}
+.top_border {
+  width: 100%;
+  height: 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: top;
+}
+.layer1 .top_border {
+  background: var(--layerColor1);
+  transform: rotateX(90deg);
+}
+.layer2 .top_border {
+  background: var(--layerColor2);
+  transform: rotateX(-90deg);
+}
+.top_border:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.layer1 .top_border:after {
+  background: var(--layerColor1);
+  transform: translateZ(var(--layerHeight_minus));
+}
+.layer2 .top_border:after {
+  background: var(--layerColor2);
+  transform: translateZ(var(--layerHeight));
+}
+.left_border {
+  width: 15px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: left;
+}
+.layer1 .left_border {
+  background: var(--layerColor1);
+  transform: rotateY(-90deg);
+}
+.layer2 .left_border {
+  background: var(--layerColor2);
+  transform: rotateY(90deg);
+}
+.left_border:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.layer1 .left_border:after {
+  background: var(--layerColor1);
+  transform: translateZ(var(--layerWidth_minus));
+}
+.layer2 .left_border:after {
+  background: var(--layerColor2);
+  transform: translateZ(var(--layerWidth));
+}
+.main_contents {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+.layer1 .main_contents {
+  transform: translateZ(15px);
+}
+.layer2 .main_contents {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.layer2 .main_contents .img {
+  width: calc(var(--layerWidth) / 2);
+  height: calc(var(--layerWidth) / 2);
+}
+.layer2 .main_contents .img img {
+  border-radius: 50%;
+  border: 4px solid #fff;
+}
+.layer2 .main_contents .name_designation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 10px;
+}
+.layer2 .main_contents .name_designation .name {
+  border-bottom: 2px solid #fff;
+  padding: 0 20px;
+  font-size: 28px;
+  font-weight: 700;
+}
+.layer2 .main_contents .name_designation .designation {
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 5px;
+}
+.layer2 .main_contents .social_links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+.layer2 .main_contents .social_links li a {
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+.item:hover .layer1 {
+  transform: translateZ(-30px) rotateY(-360deg);
+}
+.item:hover {
+  transform: rotateX(0deg) rotateY(0deg) rotate(0deg) scale(1, 1);
+}
