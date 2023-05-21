@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --imgWidth: 400px;
+  --imgHeight: 300px;
+  --magnifierBoxSize: 60px;
+}
+img {
+  object-fit: cover;
+}
+body {
+  min-height: 100vh;
+  background: #482121;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.images {
+  max-width: 820px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+  border: 2px solid #fff;
+}
+.images .img {
+  width: var(--imgWidth);
+  height: var(--imgHeight);
+  overflow: hidden;
+  position: relative;
+}
+.images .img img {
+  width: 100%;
+  height: 100%;
+}
+/* Note: magnifierBox and magnifiedImgBox should be of same ratio */
+.images .img .magnifierBox {
+  position: absolute;
+  width: var(--magnifierBoxSize);
+  height: var(--magnifierBoxSize);
+  background: #0000008c;
+  top: 0;
+  left: 0;
+  box-shadow: 6px 8px 10px #000;
+  opacity: 0;
+  cursor: zoom-in;
+}
+.images .img:hover .magnifierBox {
+  opacity: 1;
+}
+.magnifiedImgBox {
+  position: fixed;
+  width: calc(var(--magnifierBoxSize) * var(--magnifyScale));
+  height: calc(var(--magnifierBoxSize) * var(--magnifyScale));
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  transform: translateY(-50%);
+  background: #0000008c;
+  box-shadow: 6px 8px 10px #000;
+  border: 5px solid #fff;
+  visibility: hidden;
+  opacity: 0;
+}
+.magnifiedImgBox.active {
+  visibility: visible;
+  opacity: 1;
+}
+.magnifiedImgBox img {
+  position: absolute;
+  width: calc(var(--imgWidth) * var(--magnifyScale));
+  height: calc(var(--imgHeight) * var(--magnifyScale));
+}
+@media screen and (max-width: 767px) {
+  :root {
+    --imgWidth: 320px;
+    --imgHeight: 240px;
+    --magnifierBoxSize: 40px;
+  }
+}
