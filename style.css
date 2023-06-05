@@ -1,0 +1,198 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+:root {
+  --size: 400px;
+  --shadow1: 0px 0px 35px 6px rgba(0, 0, 0, 0.75);
+  --shadow2: 0px 0px 35px -6px rgba(0, 0, 0, 0.75);
+  --shadow3: 0px 0px 35px -6px rgba(255, 255, 255, 0.75);
+}
+body {
+  min-height: 100vh;
+  background: #374259;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+}
+.container {
+  width: var(--size);
+  height: calc(var(--size) * 1.5);
+  position: relative;
+}
+.container * {
+  position: absolute;
+}
+.clock {
+  width: var(--size);
+  height: var(--size);
+  background: #262a56;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+  z-index: 2;
+  border: 8px solid #ffffffab;
+  box-shadow: var(--shadow1);
+}
+.center {
+  width: 35px;
+  height: 35px;
+  background: #9db2bf;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+.circles_container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+}
+.circle {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #fff;
+  width: var(--circleSize);
+  height: var(--circleSize);
+  border-radius: 50%;
+  box-shadow: var(--shadow2);
+}
+.indicator {
+  --rotate: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(var(--rotate));
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.indicator:before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.seconds_indicator {
+  background: linear-gradient(to bottom, #95bdff 65%, transparent 35%);
+  width: 4px;
+  height: 75%;
+}
+.seconds_indicator:before {
+  width: 8px;
+  height: 8px;
+  background: #95bdff;
+  top: 65%;
+}
+.minutes_indicator {
+  background: linear-gradient(to bottom, #8bf5fa 70%, transparent 30%);
+  width: 7px;
+  height: 50%;
+}
+.minutes_indicator:before {
+  width: 14px;
+  height: 14px;
+  background: #8bf5fa;
+  top: 70%;
+}
+.hours_indicator {
+  background: linear-gradient(to bottom, #00c4ff 65%, transparent 35%);
+  width: 10px;
+  height: 35%;
+}
+.hours_indicator:before {
+  width: 20px;
+  height: 20px;
+  background: #00c4ff;
+  top: 65%;
+}
+.lines {
+  width: 100%;
+  height: 100%;
+}
+.hour {
+  height: 50%;
+  width: 20px;
+  left: 50%;
+  transform-origin: bottom;
+  /* 360 / 12 = 30 */
+  transform: translateX(-50%) rotate(calc(var(--i) * 30deg));
+  padding-top: 7px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+}
+.hour span {
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(calc(360deg - (var(--i) * 30deg)));
+}
+.minute {
+  width: 1px;
+  height: 50%;
+  left: 50%;
+  transform-origin: bottom;
+  /* 360 / 60 = 6 */
+  transform: translateX(-50%) rotate(calc(var(--i) * 6deg));
+}
+.minute span {
+  width: 100%;
+  height: 24px;
+  top: 3px;
+  background: #00ffcc;
+  filter: blur(1px);
+}
+.bellBox {
+  width: calc(var(--size) / 1.5);
+  height: calc(var(--size) / 1.5);
+  background: #262a56;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 8px solid #ffffffab;
+  border-bottom-left-radius: 35%;
+  border-bottom-right-radius: 35%;
+  box-shadow: var(--shadow1);
+}
+.bell {
+  width: 20px;
+  height: 70%;
+  background: linear-gradient(to right, #00000013, #dfffd8, #00000013);
+  top: 0;
+  left: 50%;
+  transform-origin: top;
+  transform: translateX(-50%) rotate(0);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: var(--shadow3);
+  animation: animate 2s infinite;
+}
+.bell:before {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(ellipse at center, #dfffd8, #000000);
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  box-shadow: var(--shadow3);
+}
+@keyframes animate {
+  0%,
+  100% {
+    transform: translateX(-50%) rotate(15deg);
+  }
+  50% {
+    transform: translateX(-50%) rotate(-15deg);
+  }
+}
