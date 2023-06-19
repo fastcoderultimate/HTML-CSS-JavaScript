@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typing Expert</title>
+    <!-- Fontawesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="overlay" onclick="hideBox()"></div>
+    <div class="container">
+      <input disabled class="typingText" type="text" />
+      <div class="updates dfsa">
+        <p class="duration">Duration =) <span>00 : 00 : 00</span></p>
+        <p class="typedChars">Typed Chars : <span>000</span></p>
+        <p class="errors">Errors : <span>00</span></p>
+      </div>
+      <div class="mainBox dfc">
+        <button class="paragraphsBtn dfc">
+          <i class="fa-solid fa-paragraph"></i>
+          <i class="fa-solid fa-list-ul"></i>
+        </button>
+        <div class="typingBox">
+          <p></p>
+        </div>
+        <button class="playBtn" onclick="startPause()">
+          <i class="fa-regular fa-circle-play"></i>
+        </button>
+      </div>
+      <div class="keyboard">
+        <div class="row row1">
+          <span code="Backquote">
+            &nbsp; ~
+            <br />
+            `
+          </span>
+          <span code="Digit1">
+            &nbsp; !
+            <br />
+            1
+          </span>
+          <span code="Digit2">
+            &nbsp; @
+            <br />
+            2
+          </span>
+          <span code="Digit3">
+            &nbsp; #
+            <br />
+            3
+          </span>
+          <span code="Digit4">
+            &nbsp; $
+            <br />
+            4
+          </span>
+          <span code="Digit5">
+            &nbsp; %
+            <br />
+            5
+          </span>
+          <span code="Digit6">
+            &nbsp; ^
+            <br />
+            6
+          </span>
+          <span code="Digit7">
+            &nbsp; &
+            <br />
+            7
+          </span>
+          <span code="Digit8">
+            &nbsp; *
+            <br />
+            8
+          </span>
+          <span code="Digit9">
+            &nbsp; (
+            <br />
+            9
+          </span>
+          <span code="Digit0">
+            &nbsp; )
+            <br />
+            0
+          </span>
+          <span code="Minus">
+            &nbsp; _
+            <br />
+            -
+          </span>
+          <span code="Equal">
+            &nbsp; +
+            <br />
+            =
+          </span>
+          <span code="Backspace">Back</span>
+        </div>
+        <div class="row row2">
+          <span code="Tab">Tab</span>
+          <span code="KeyQ">Q</span>
+          <span code="KeyW">W</span>
+          <span code="KeyE">E</span>
+          <span code="KeyR">R</span>
+          <span code="KeyT">T</span>
+          <span code="KeyY">Y</span>
+          <span code="KeyU">U</span>
+          <span code="KeyI">I</span>
+          <span code="KeyO">O</span>
+          <span code="KeyP">P</span>
+          <span code="BracketLeft">
+            &nbsp; {
+            <br />
+            [
+          </span>
+          <span code="BracketRight">
+            &nbsp; }
+            <br />
+            ]
+          </span>
+          <span code="Backslash">
+            &nbsp; |
+            <br />
+            \
+          </span>
+        </div>
+        <div class="row row3">
+          <span code="CapsLock">CAPS</span>
+          <span code="KeyA">A</span>
+          <span code="KeyS">S</span>
+          <span code="KeyD">D</span>
+          <span code="KeyF">F</span>
+          <span code="KeyG">G</span>
+          <span code="KeyH">H</span>
+          <span code="KeyJ">J</span>
+          <span code="KeyK">K</span>
+          <span code="KeyL">L</span>
+          <span code="Semicolon">
+            &nbsp; :
+            <br />
+            ;
+          </span>
+          <span code="Quote">
+            &nbsp; :
+            <br />
+            ;
+          </span>
+          <span code="Enter"> Enter </span>
+        </div>
+        <div class="row row4">
+          <span code="ShiftLeft">Shift</span>
+          <span code="KeyZ">Z</span>
+          <span code="KeyX">X</span>
+          <span code="KeyC">C</span>
+          <span code="KeyV">V</span>
+          <span code="KeyB">B</span>
+          <span code="KeyN">N</span>
+          <span code="KeyM">M</span>
+          <span code="Comma">
+            &nbsp; <
+            <br />
+            ,
+          </span>
+          <span code="Period">
+            &nbsp; >
+            <br />
+            .
+          </span>
+          <span code="Slash">
+            &nbsp; ?
+            <br />
+            /
+          </span>
+          <span code="ShiftRight">Shift</span>
+        </div>
+        <div class="row row5">
+          <span code="ControlLeft">CTRL</span>
+          <span code="MetaLeft"><i class="fa-brands fa-windows"></i></span>
+          <span code="AltLeft">ALT</span>
+          <span code="Space">
+            <i class="fa-solid fa-ellipsis"></i>
+            <i class="fa-solid fa-ellipsis"></i>
+          </span>
+          <span code="AltRight">ALT</span>
+          <span>FN</span>
+          <span code="ContextMenu"
+            ><i class="fa-solid fa-clipboard-list"></i
+          ></span>
+          <span code="ControlRight">CTRL</span>
+        </div>
+      </div>
+      <div class="shortcuts dfc">
+        <p>Press F8 &nbsp; => &nbsp; Start || Pause || Resume</p>
+        <p>Press F9 &nbsp; => &nbsp; Restart</p>
+      </div>
+      <div class="paragraphBox">
+        <h3 class="title">Paragraphs</h3>
+        <div class="inputBox">
+          <input type="text" class="titleInput" />
+          <textarea class="textInput"></textarea>
+          <div class="inputBtns">
+            <button class="cancel" onclick="hideInputBox()">Cancel</button>
+            <button class="add" onclick="addParagraph()">Add</button>
+          </div>
+        </div>
+        <button class="showInputBtn dfc" onclick="showInputBox()">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="paragraphList"></div>
+      </div>
+      <div class="resultBox dfc">
+        <h3>Result</h3>
+        <div class="results">
+          <p class="totalDuration">Duration : <span>00 : 00 : 00</span></p>
+          <p class="totalTyped">Typed Chars : <span>000</span></p>
+          <p class="typedSpeed">Typing Speed : <span>00 letters/s</span></p>
+          <p class="totalErrors">Errors : <span>00</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Utils JS -->
+    <script src="functions.js"></script>
+    <!-- Script JS -->
+    <script src="main.js"></script>
+  </body>
+</html>

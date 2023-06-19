@@ -1,0 +1,366 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400;500;700&display=swap");
+/* font-family: 'Poppins', sans-serif;
+font-family: 'Roboto', sans-serif; */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --color1: #fff;
+  --color2: #0ca842;
+  --bg1: #000000b0;
+  --box-shadow1: 4px 4px 5px 0px rgba(0, 0, 0, 0.75),
+    -4px -4px 5px 0px rgba(255, 255, 255, 0.75);
+}
+body {
+  min-height: 100vh;
+  background: url("images/nature.jpg") no-repeat center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--color1);
+  font-family: "Roboto", sans-serif;
+  width: 1340px;
+  margin: auto;
+}
+body:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #00000055;
+  z-index: -1;
+}
+button {
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  color: #fff;
+}
+button:disabled {
+  opacity: 0.6;
+}
+.df,
+.dfc,
+.dfsb,
+.dfsa {
+  display: flex;
+  align-items: center;
+}
+.dfc {
+  justify-content: center;
+}
+.dfsb {
+  justify-content: space-between;
+}
+.dfsa {
+  justify-content: space-around;
+}
+.overlay {
+  position: fixed;
+  background: #0000008f;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
+}
+.overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+.container {
+  width: 100%;
+  padding: 0 40px;
+}
+.typingText {
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+.updates p {
+  font-size: 30px;
+  font-weight: 600;
+}
+.mainBox {
+  gap: 5px;
+  margin-top: 30px;
+}
+.typingBox {
+  height: 85px;
+  background: var(--bg1);
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #ffffff9d;
+  box-shadow: var(--box-shadow1);
+  opacity: 0.6;
+}
+.typingBox.active {
+  opacity: 1;
+}
+.typingBox p {
+  --fromLeft: 0px;
+  white-space: nowrap;
+  font-family: "Poppins", sans-serif;
+  font-size: 60px;
+  color: transparent;
+  -webkit-text-stroke: 2px #fff;
+  position: absolute;
+  top: 50%;
+  left: calc(50% - var(--fromLeft));
+  transform: translateY(-50%);
+  user-select: none;
+}
+.typingBox p span.active {
+  background: #79e0ee;
+  -webkit-text-stroke: 2px #000;
+}
+.typingBox p span.error {
+  background: #cd1818;
+}
+.typingBox p span.typed {
+  color: #79e0ee;
+  -webkit-text-stroke: 0;
+}
+.mainBox button {
+  height: 85px;
+  background: var(--bg1);
+  border: 1px solid #ffffff9d;
+  box-shadow: var(--box-shadow1);
+}
+.paragraphsBtn {
+  gap: 3px;
+  font-size: 30px;
+  padding: 0 10px;
+}
+.playBtn {
+  width: 85px;
+  font-size: 40px;
+}
+/* Keyboard CSS start here */
+.keyboard {
+  width: 100%;
+  margin-top: 40px;
+}
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.keyboard span {
+  --keySize: 70px;
+  width: var(--keySize);
+  height: var(--keySize);
+  background: #0000007c;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--box-shadow1);
+}
+.keyboard span.active {
+  color: rgb(255, 255, 255);
+  background: #ffffff4f;
+}
+.row1 span:last-child,
+.row2 span:first-child {
+  width: calc(var(--keySize) * 1.5);
+}
+.row3 span:first-child {
+  width: calc(var(--keySize) * 1.85);
+}
+.row3 span:last-child {
+  width: calc(var(--keySize) * 1.7);
+}
+.row4 span:first-child {
+  width: calc(var(--keySize) * 2.25);
+}
+.row4 span:last-child {
+  width: calc(var(--keySize) * 2.35);
+}
+.row5 span:nth-child(4) {
+  width: calc(var(--keySize) * 7.8);
+  font-size: 70px;
+  letter-spacing: 5px;
+}
+/* Keyboard CSS end here */
+
+.shortcuts {
+  font-size: 28px;
+  margin-top: 50px;
+  gap: 60px;
+}
+.shortcuts p {
+  font-weight: 600;
+  border-left: 10px solid #fff;
+  padding: 0 10px;
+}
+.paragraphBox {
+  position: fixed;
+  background: #000000d0;
+  border: 1px solid #fff;
+  z-index: 1;
+  width: 500px;
+  height: 85vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
+}
+.paragraphBox.show {
+  opacity: 1;
+  visibility: visible;
+}
+.paragraphBox h3.title {
+  position: absolute;
+  font-size: 30px;
+  border-bottom: 1px solid #fff;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  background: #000;
+}
+.paragraphList {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  padding: 40px 10px 80px;
+}
+.item {
+  text-align: left;
+  border-bottom: 1px solid #fff;
+  padding: 10px 0;
+  cursor: pointer;
+}
+.item.active .title,
+.item.active p {
+  color: var(--color2);
+}
+.item h4 {
+  font-size: 20px;
+}
+.item h4 .btns {
+  justify-content: center;
+  gap: 40px;
+  font-size: 22px;
+  opacity: 0;
+}
+.item:hover .btns {
+  opacity: 1;
+}
+.item h4 .btns i {
+  cursor: pointer;
+}
+.item h4 .btns i:hover {
+  color: #1b9c85;
+}
+.item p {
+  display: none;
+}
+.item.show p {
+  display: block;
+  margin-top: 10px;
+}
+.showInputBtn {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  right: 30px;
+  bottom: 20px;
+  background: #ffffffad;
+  color: #000;
+  font-size: 30px;
+  border-radius: 50%;
+}
+.showInputBtn.hide {
+  display: none;
+}
+.inputBox {
+  width: 100%;
+  position: absolute;
+  background: #000;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 30px 0;
+  border-bottom: 1px solid #fff;
+  display: none;
+}
+.inputBox.show {
+  display: block;
+}
+.titleInput,
+.textInput {
+  width: 90%;
+  background: #ffffff1a;
+  border: 1px solid #fff;
+  color: #fff;
+  font-size: 17px;
+  padding: 5px 10px;
+}
+.titleInput {
+  height: 40px;
+}
+.textInput {
+  resize: none;
+  margin-top: 10px;
+  height: 150px;
+}
+.inputBtns button {
+  font-size: 17px;
+  font-weight: 600;
+  width: 90px;
+  height: 40px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  margin: 5px;
+}
+.cancel {
+  background: #b31312;
+}
+.add {
+  background: #1b9c85;
+}
+.resultBox {
+  position: fixed;
+  background: #000000d0;
+  width: 400px;
+  padding: 30px 50px;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  flex-direction: column;
+  gap: 25px;
+  border: 2px solid #fff;
+  opacity: 0;
+  visibility: hidden;
+}
+.resultBox.show {
+  opacity: 1;
+  visibility: visible;
+}
+.resultBox h3 {
+  font-size: 40px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #fff;
+  padding: 0 10px;
+}
+.resultBox p {
+  font-size: 25px;
+  margin-top: 15px;
+}
