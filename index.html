@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Animated Form</title>
+    <!-- FontAwesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="buttons">
+        <button onclick="animateToSignIn()" class="signInBtn active">
+          Sign In
+        </button>
+        <button class="signUpBtn" onclick="animateToSignUp()">Sign Up</button>
+        <div class="indicator"></div>
+      </div>
+      <div class="forms">
+        <form class="signInForm">
+          <div class="contents">
+            <div class="inputBox">
+              <label for="name">Enter Your Username</label>
+              <input id="name" type="text" required />
+              <i class="fa-solid fa-circle-xmark"></i>
+            </div>
+            <div class="inputBox passwordBox">
+              <label for="password">Enter Your Password</label>
+              <input
+                class="passwordInput"
+                id="password"
+                type="password"
+                required
+              />
+              <i class="fa-solid fa-circle-xmark"></i>
+            </div>
+            <div class="checkBox">
+              <input class="check" id="show" type="checkbox" />
+              <label for="show">Show password</label>
+            </div>
+            <a href="#">Forgot password?</a>
+            <input class="submitBtn" type="submit" value="Sign In" />
+            <p>
+              New User?
+              <span onclick="animateToSignUp()">Register Now.</span>
+            </p>
+          </div>
+        </form>
+        <form class="signUpForm">
+          <div class="contents">
+            <div class="inputBox">
+              <label for="email">Enter Your Email</label>
+              <input id="email" type="text" required />
+              <i class="fa-solid fa-circle-xmark"></i>
+            </div>
+            <div class="inputBox passwordBox">
+              <label for="passWord">Enter Your Password</label>
+              <input
+                class="passwordInput"
+                id="passWord"
+                type="password"
+                required
+              />
+              <i class="fa-solid fa-circle-xmark"></i>
+            </div>
+            <div class="inputBox confirmPasswordBox">
+              <label for="confirmPassword">Confirm Password</label>
+              <input
+                class="passwordInput"
+                id="confirmPassword"
+                type="password"
+                required
+              />
+              <i class="fa-solid fa-circle-xmark"></i>
+            </div>
+            <div class="checkBox">
+              <input class="check" id="show2" type="checkbox" />
+              <label for="show2">Show password</label>
+            </div>
+            <input class="submitBtn" type="submit" value="Sign Up" />
+            <p>
+              Already a member?
+              <span onclick="animateToSignIn()">Sign In.</span>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Script JS -->
+    <script src="main.js"></script>
+  </body>
+</html>

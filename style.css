@@ -1,0 +1,262 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400;500;700&display=swap");
+/* 
+font-family: 'Poppins', sans-serif;
+font-family: 'Roboto', sans-serif;
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transform-style: preserve-3d;
+  font-family: "Roboto", sans-serif;
+}
+:root {
+  --box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.75),
+    -4px -4px 5px rgba(255, 255, 255, 0.75);
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom right, #40128b, #9376e0);
+}
+button {
+  border: 0;
+  outline: 0;
+  font-size: 17px;
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+}
+.container {
+  width: 400px;
+  height: 480px;
+  border: 3px solid #fff;
+  box-shadow: var(--box-shadow);
+  position: relative;
+  perspective: 1000px;
+  overflow: hidden;
+}
+.buttons {
+  position: absolute;
+  height: 40px;
+  left: 50%;
+  top: 30px;
+  transform: translateX(-50%);
+  background: #0e2954;
+  border-radius: 30px;
+  border: 4px solid #fff;
+  box-shadow: var(--box-shadow);
+}
+.buttons button {
+  background: transparent;
+  width: 80px;
+  height: 100%;
+  font-size: 14px;
+  border-radius: 30px;
+  color: #fff;
+}
+.indicator {
+  background: #22a699;
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  border-radius: 30px;
+  transition: 0.5s linear;
+  box-shadow: 0px 0px 2px 2px #ffffff94;
+}
+.signInBtn.active ~ .indicator {
+  left: 0;
+}
+.signUpBtn.active ~ .indicator {
+  left: 50%;
+}
+.forms {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  scale: 1;
+  transform-origin: left;
+  transition: 1s;
+}
+form {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #30a2ff;
+  top: 0;
+  border: 4px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 80px;
+}
+.signInForm {
+  left: 0;
+}
+.signUpForm {
+  left: 400px;
+  transform-origin: left;
+  transform: rotateY(90deg);
+}
+.forms.animateToSignUp {
+  transform: translateZ(-400px) rotateY(-90deg);
+  animation: animateToSignUp 1s linear;
+}
+.forms.animateToSignIn {
+  animation: animateToSignIn 1s linear;
+}
+@keyframes animateToSignUp {
+  0% {
+    scale: 1;
+    transform: translateZ(0) rotateY(0);
+  }
+  50% {
+    scale: 0.7;
+    transform: translateZ(-400px) rotateY(-45deg);
+  }
+  100% {
+    scale: 1;
+    transform: translateZ(-400px) rotateY(-90deg);
+  }
+}
+@keyframes animateToSignIn {
+  0% {
+    scale: 1;
+    transform: translateZ(-400px) rotateY(-90deg);
+  }
+  50% {
+    scale: 0.7;
+    transform: translateZ(-400px) rotateY(-45deg);
+  }
+  100% {
+    scale: 1;
+    transform: translateZ(0) rotateY(0);
+  }
+}
+.contents {
+  width: 75%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.contents div {
+  width: 100%;
+}
+.inputBox {
+  box-shadow: var(--box-shadow);
+  border-radius: 10px;
+  height: 50px;
+  transition: 0.5s;
+  margin-top: 30px;
+}
+.inputBox input {
+  position: absolute;
+  width: 100%;
+  background: #0000006d;
+  height: 100%;
+  border: 5px solid #fff;
+  border-radius: 10px;
+  outline: 0;
+  color: #fff;
+  font-size: 18px;
+  padding: 0 45px 0 10px;
+}
+.inputBox label {
+  position: absolute;
+  font-size: 17px;
+  text-align: left;
+  padding: 2px 7px;
+  color: #fff;
+  border-radius: 5px;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  transition: 0.5s;
+  pointer-events: none;
+}
+.inputBox i {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 22px;
+  cursor: pointer;
+  color: #fff;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
+}
+.inputBox i.active {
+  opacity: 1;
+  visibility: visible;
+}
+.inputBox.active input {
+  border: 5px solid #9bced2;
+}
+.inputBox.active label {
+  background: #9bced2;
+  color: #000;
+  box-shadow: var(--box-shadow);
+  font-size: 12px;
+  left: 15px;
+  top: -5px;
+}
+.checkBox {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  opacity: 0;
+  visibility: hidden;
+}
+.checkBox.active {
+  opacity: 1;
+  visibility: visible;
+}
+form a {
+  margin-top: 10px;
+  padding-left: 20px;
+  width: 100%;
+  font-size: 15px;
+}
+.submitBtn {
+  width: 85px;
+  height: 35px;
+  border-radius: 10px;
+  background: #9bced2;
+  font-weight: 600;
+  font-size: 15px;
+  transition: 0.5s;
+  box-shadow: var(--box-shadow);
+  border: 4px solid transparent;
+  margin-top: 15px;
+  cursor: pointer;
+}
+.submitBtn:hover {
+  background: #0000006d;
+  color: #fff;
+  border: 4px solid #9bced2;
+}
+form p {
+  margin-top: 20px;
+  font-size: 17px;
+}
+form p span {
+  background: transparent;
+  font-size: 20px;
+  color: #0c2038;
+  cursor: pointer;
+}
