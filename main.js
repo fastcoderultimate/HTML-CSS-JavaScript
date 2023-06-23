@@ -1,44 +1,44 @@
-const signInBtn = document.querySelector(".signInBtn");
-const signUpBtn = document.querySelector(".signUpBtn");
-const formsBox = document.querySelector(".forms");
-const forms = formsBox.querySelectorAll("form");
+const signInBtn = document.querySelector(".signInBtn"),
+  signUpBtn = document.querySelector(".signUpBtn"),
+  formsBox = document.querySelector(".forms"),
+  forms = formsBox.querySelectorAll("form");
 
 const animateToSignUp = () => {
   signInBtn.classList.contains("active") &&
     signInBtn.classList.remove("active");
+  signUpBtn.classList.add("active");
 
   formsBox.classList.contains("animateToSignIn") &&
     formsBox.classList.remove("animateToSignIn");
   formsBox.classList.add("animateToSignUp");
-
-  signUpBtn.classList.add("active");
 };
 const animateToSignIn = () => {
   signUpBtn.classList.contains("active") &&
     signUpBtn.classList.remove("active");
+  signInBtn.classList.add("active");
 
   formsBox.classList.contains("animateToSignUp") &&
     formsBox.classList.remove("animateToSignUp");
   formsBox.classList.add("animateToSignIn");
-
-  signInBtn.classList.add("active");
 };
 
 forms.forEach((form) => {
-  const inputBoxs = form.querySelectorAll(".inputBox");
-  const checkBox = form.querySelector(".checkBox");
-  const passwordBox = form.querySelector(".passwordBox");
-  const confirmPasswordBox = form.querySelector(".confirmPasswordBox");
+  const inputBoxs = form.querySelectorAll(".inputBox"),
+    checkBox = form.querySelector(".checkBox"),
+    passwordBox = form.querySelector(".passwordBox"),
+    confirmPasswordBox = form.querySelector(".confirmPasswordBox");
 
   inputBoxs.forEach((item) => {
-    const input = item.querySelector("input");
-    const icon = item.querySelector("i");
+    const input = item.querySelector("input"),
+      icon = item.querySelector("i");
 
     input.addEventListener("focus", () => item.classList.add("active"));
+
     input.addEventListener(
       "blur",
       () => input.value === "" && item.classList.remove("active")
     );
+
     input.addEventListener("input", () =>
       input.value === ""
         ? icon.classList.remove("active")
@@ -49,14 +49,15 @@ forms.forEach((form) => {
       input.value = "";
       icon.classList.remove("active");
     });
-    if (item === passwordBox || confirmPasswordBox) {
+    if (item === passwordBox || item === confirmPasswordBox) {
       input.addEventListener("input", () => checkBoxToggle());
       icon.addEventListener("click", () => checkBoxToggle());
       checkBox.querySelector("input").addEventListener("change", function () {
-        this.checked ? (input.type = "text") : (input.type = "password");
+        input.type = this.checked ? "text" : "password";
       });
     }
   });
+
   const checkBoxToggle = () => {
     const passwordInput = passwordBox.querySelector("input");
     if (!confirmPasswordBox) {
