@@ -1,8 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400;500;700&display=swap");
-/* 
-font-family: 'Poppins', sans-serif;
-font-family: 'Roboto', sans-serif;
-*/
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
 * {
   margin: 0;
@@ -20,12 +16,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to bottom right, #40128b, #9376e0);
+  background: linear-gradient(to bottom right, #40128b, #9375e0);
 }
 button {
   border: 0;
   outline: 0;
-  font-size: 17px;
   cursor: pointer;
 }
 a {
@@ -34,7 +29,7 @@ a {
 .container {
   width: 400px;
   height: 480px;
-  border: 3px solid #fff;
+  border: 4px solid #fff;
   box-shadow: var(--box-shadow);
   position: relative;
   perspective: 1000px;
@@ -46,6 +41,7 @@ a {
   left: 50%;
   top: 30px;
   transform: translateX(-50%);
+  z-index: 1;
   background: #0e2954;
   border-radius: 30px;
   border: 4px solid #fff;
@@ -55,9 +51,8 @@ a {
   background: transparent;
   width: 80px;
   height: 100%;
-  font-size: 14px;
-  border-radius: 30px;
   color: #fff;
+  font-size: 14px;
 }
 .indicator {
   background: #22a699;
@@ -68,7 +63,7 @@ a {
   z-index: -1;
   border-radius: 30px;
   transition: 0.5s linear;
-  box-shadow: 0px 0px 2px 2px #ffffff94;
+  box-shadow: 0 0 2px 2px #ffffff94;
 }
 .signInBtn.active ~ .indicator {
   left: 0;
@@ -80,33 +75,11 @@ a {
   position: absolute;
   width: 100%;
   height: 100%;
-  left: 0;
   top: 0;
+  left: 0;
   z-index: -1;
-  scale: 1;
   transform-origin: left;
   transition: 1s;
-}
-form {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #30a2ff;
-  top: 0;
-  border: 4px solid #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding-top: 80px;
-}
-.signInForm {
-  left: 0;
-}
-.signUpForm {
-  left: 400px;
-  transform-origin: left;
-  transform: rotateY(90deg);
 }
 .forms.animateToSignUp {
   transform: translateZ(-400px) rotateY(-90deg);
@@ -143,6 +116,26 @@ form {
     transform: translateZ(0) rotateY(0);
   }
 }
+form {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #30a2ff;
+  top: 0;
+  border: 4px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px;
+}
+.signInForm {
+  left: 0;
+}
+.signUpForm {
+  left: 400px;
+  transform-origin: left;
+  transform: rotateY(90deg);
+}
 .contents {
   width: 75%;
   height: 100%;
@@ -157,14 +150,12 @@ form {
   box-shadow: var(--box-shadow);
   border-radius: 10px;
   height: 50px;
-  transition: 0.5s;
   margin-top: 30px;
 }
 .inputBox input {
-  position: absolute;
   width: 100%;
-  background: #0000006d;
   height: 100%;
+  background: #0000006d;
   border: 5px solid #fff;
   border-radius: 10px;
   outline: 0;
@@ -175,14 +166,13 @@ form {
 .inputBox label {
   position: absolute;
   font-size: 17px;
-  text-align: left;
   padding: 2px 7px;
   color: #fff;
-  border-radius: 5px;
+  z-index: 1;
   left: 15px;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 1;
+  border-radius: 5px;
   transition: 0.5s;
   pointer-events: none;
 }
@@ -196,7 +186,7 @@ form {
   color: #fff;
   opacity: 0;
   visibility: hidden;
-  transition: 0.5s;
+  transform: 0.5s;
 }
 .inputBox i.active {
   opacity: 1;
@@ -210,7 +200,6 @@ form {
   color: #000;
   box-shadow: var(--box-shadow);
   font-size: 12px;
-  left: 15px;
   top: -5px;
 }
 .checkBox {
@@ -228,8 +217,8 @@ form {
 }
 form a {
   margin-top: 10px;
-  padding-left: 20px;
   width: 100%;
+  padding-left: 20px;
   font-size: 15px;
 }
 .submitBtn {
@@ -239,11 +228,11 @@ form a {
   background: #9bced2;
   font-weight: 600;
   font-size: 15px;
-  transition: 0.5s;
-  box-shadow: var(--box-shadow);
   border: 4px solid transparent;
   margin-top: 15px;
   cursor: pointer;
+  box-shadow: var(--box-shadow);
+  transition: 0.5s;
 }
 .submitBtn:hover {
   background: #0000006d;
@@ -255,7 +244,6 @@ form p {
   font-size: 17px;
 }
 form p span {
-  background: transparent;
   font-size: 20px;
   color: #0c2038;
   cursor: pointer;
